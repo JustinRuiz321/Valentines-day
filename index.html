@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine? 💕</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #fce4ec, #f8bbd0, #f48fb1);
+            font-family: 'Georgia', serif;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            color: #c62828;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .hearts {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            animation: pulse 1.2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+        }
+
+        .buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-yes {
+            padding: 16px 40px;
+            font-size: 1.2rem;
+            background: #e53935;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s, font-size 0.3s, padding 0.3s;
+            box-shadow: 0 4px 15px rgba(229, 57, 53, 0.4);
+        }
+
+        .btn-yes:hover {
+            box-shadow: 0 6px 25px rgba(229, 57, 53, 0.6);
+        }
+
+        .btn-no {
+            padding: 16px 40px;
+            font-size: 1.2rem;
+            background: #bdbdbd;
+            color: #424242;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: bold;
+            transition: transform 0.2s;
+        }
+
+        .btn-no:hover {
+            background: #9e9e9e;
+        }
+
+        /* Success page */
+        .success {
+            display: none;
+            text-align: center;
+        }
+
+        .success h1 {
+            font-size: 2.5rem;
+            color: #c62828;
+            margin-bottom: 1rem;
+        }
+
+        .success p {
+            font-size: 1.4rem;
+            color: #d32f2f;
+            margin-bottom: 1.5rem;
+        }
+
+        .success img {
+            max-width: 360px;
+            width: 90vw;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Question Page -->
+        <div class="question" id="question">
+            <div class="hearts">💖💕💖</div>
+            <h1>Will you be my Valentine?</h1>
+            <div class="buttons">
+                <button class="btn-yes" id="yesBtn" onclick="sayYes()">Yes 💗</button>
+                <button class="btn-no" id="noBtn" onclick="sayNo()">No</button>
+            </div>
+        </div>
+
+        <!-- Success Page -->
+        <div class="success" id="success">
+            <div class="hearts">🎉💖🎉</div>
+            <h1>Yaaay!! 💕</h1>
+            <p>I knew you'd say yes!</p>
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExaHR5dXQ4OGN4a2RqeWkyeHVkdHhrcTd5eXZoY2RrZW9sMnJjcHZudiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/11sBLVxNs7v6WA/giphy.gif" alt="Excited Minion">
+        </div>
+    </div>
+
+    <script>
+        let scale = 1;
+        const yesBtn = document.getElementById('yesBtn');
+
+        function sayNo() {
+            scale += 0.05;
+            yesBtn.style.transform = `scale(${scale})`;
+        }
+
+        function sayYes() {
+            document.getElementById('question').style.display = 'none';
+            const success = document.getElementById('success');
+            success.style.display = 'block';
+            success.classList.add('fade-in');
+        }
+    </script>
+</body>
+</html>
